@@ -1,16 +1,6 @@
 // components/Chatbot.jsx
 "use client";
 import React, { useState } from "react";
-import { Button } from "@nextui-org/react";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/popover";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-} from "@nextui-org/react";
 import { Meteors } from "./meteors";
 import { Input } from "@nextui-org/input";
 
@@ -39,30 +29,83 @@ const Chatbot = () => {
       message: "I am looking for a book related to Blockchain",
       sender: "user",
     },
+    {
+      id: 5,
+      message: "Sure, we have a book called Blockchain for Dummies",
+      sender: "bot",
+    },
+    {
+      id: 6,
+      message: "Great! Can I know the price of the book?",
+      sender: "user",
+    },
+    {
+      id: 7,
+      message: "The price of the book is $20",
+      sender: "bot",
+    },
+    {
+      id: 8,
+      message: "Thank you for the information",
+      sender: "user",
+    },
+    {
+      id: 9,
+      message: "You're welcome! Let me know if you need anything else",
+      sender: "bot",
+    },
+    {
+      id: 10,
+      message: "What other books do you have?",
+      sender: "user",
+    },
+    {
+      id: 11,
+      message: "We have books on various topics such as AI, ML, and more",
+      sender: "bot",
+    },
+    {
+      id: 12,
+      message: "I would like to know more about the book on AI",
+      sender: "user",
+    },
+    {
+      id: 13,
+      message: "The book on AI is called Artificial Intelligence 101",
+      sender: "bot",
+    },
+    {
+      id: 14,
+      message: "Can you tell me more about the book?",
+      sender: "user",
+    },
+    {
+      id: 15,
+      message:
+        "Artificial Intelligence 101 is a beginner-friendly book that covers the basics of AI and its applications",
+      sender: "bot",
+    },
+    {
+      id: 16,
+      message: "Sounds interesting! What is the price of the book?",
+      sender: "user",
+    },
+    {
+      id: 17,
+      message: "The price of the book is $25",
+      sender: "bot",
+    },
+    {
+      id: 18,
+      message: "Thank you for the information",
+      sender: "user",
+    },
+    {
+      id: 19,
+      message: "You're welcome! Let me know if you need anything else",
+      sender: "bot",
+    },
   ];
-  // const messages = [
-  //   {
-  //     id: 1,
-  //     message: "Hello, how can I help you today?",
-  //     sender: "bot",
-  //   },
-  //   {
-  //     id: 2,
-  //     message: "I would like to know more about your services",
-  //     sender: "user",
-  //   },
-  //   {
-  //     id: 3,
-  //     message:
-  //       "Sure, we offer a wide range of services. What are you looking for?",
-  //     sender: "bot",
-  //   },
-  //   {
-  //     id: 4,
-  //     message: "I am looking for a book related to Blockchain",
-  //     sender: "user",
-  //   },
-  // ];
   const [userInput, setUserInput] = useState("");
   const [messages, setMessages] = useState([initialMessages[0]]);
 
@@ -95,48 +138,14 @@ const Chatbot = () => {
   };
   return (
     <>
-      {/* <Popover placement="top-end" offset={20} showArrow>
-        <PopoverTrigger>
-          <Button>Open Popover</Button>
-        </PopoverTrigger>
-        <PopoverContent>
-          <div className="px-1 py-2">
-            <div className="text-small font-bold">Popover Content</div>
-            <div className="text-tiny">This is the popover content</div>
-          </div>
-        </PopoverContent>
-      </Popover> */}
       <div className="z-60">
         <div className=" w-full relative max-w-lg h-[40rem] space-y-2">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start gap-4">
-            {/* <div className="h-5 w-5 rounded-full border flex items-center justify-center mb-4 border-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-2 w-2 text-gray-300"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"
-                />
-              </svg>
-            </div> */}
-
-            {/* <h1 className="font-bold text-xl text-white mb-4 relative z-50">
-              Meteors because they&apos;re cool
-            </h1> */}
             <div className="flex items-center justify-between w-full">
               <h1 className="font-bold text-xl text-white mb-4 absolute top-3 z-50">
                 Libr-AI-nian
               </h1>
-              {/* <button className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300">
-                Close
-              </button> */}
             </div>
             <div className="flex flex-col space-y-4">
               {messages.map((message) => (
@@ -164,14 +173,8 @@ const Chatbot = () => {
                 label="Enter your message..."
                 className="w-full"
                 value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
+                onChange={(e: any) => setUserInput(e.target.value)}
               />
-
-              {/* <p className="font-normal text-base text-slate-500 mb-4 relative z-50">
-              I don&apos;t know what to write so I&apos;ll just paste something
-              cool here. One more sentence because lorem ipsum is just
-              unacceptable. Won&apos;t ChatGPT the shit out of this.
-            </p> */}
 
               <button
                 className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300"
@@ -180,7 +183,6 @@ const Chatbot = () => {
                 Send
               </button>
             </div>
-            {/* Meaty part - Meteor effect */}
             <Meteors number={20} />
           </div>
         </div>

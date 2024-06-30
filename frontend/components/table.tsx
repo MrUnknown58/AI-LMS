@@ -1,6 +1,6 @@
 // Tremor Raw Table [v0.0.1]
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/frontend/lib/utils";
 import React from "react";
 
 const TableRoot = React.forwardRef<

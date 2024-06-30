@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/frontend/lib/utils";
 import clsx from "clsx";
 import React from "react";
 

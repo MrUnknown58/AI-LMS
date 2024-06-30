@@ -17,7 +17,7 @@ import {
   TableHeaderCell,
   TableRoot,
   TableRow,
-} from "@/components/table";
+} from "@/frontend/components/table";
 
 const ModalLoader = ({
   id,

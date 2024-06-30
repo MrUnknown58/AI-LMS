@@ -17,7 +17,7 @@ import { Input } from "@nextui-org/input";
 const Chatbot = () => {
   //   const [visible, setVisible] = useState(false);
   //   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const messages = [
+  const initialMessages = [
     {
       id: 1,
       message: "Hello, how can I help you today?",
@@ -36,11 +36,63 @@ const Chatbot = () => {
     },
     {
       id: 4,
-      message: "I am looking for a web developer",
+      message: "I am looking for a book related to Blockchain",
       sender: "user",
     },
   ];
+  // const messages = [
+  //   {
+  //     id: 1,
+  //     message: "Hello, how can I help you today?",
+  //     sender: "bot",
+  //   },
+  //   {
+  //     id: 2,
+  //     message: "I would like to know more about your services",
+  //     sender: "user",
+  //   },
+  //   {
+  //     id: 3,
+  //     message:
+  //       "Sure, we offer a wide range of services. What are you looking for?",
+  //     sender: "bot",
+  //   },
+  //   {
+  //     id: 4,
+  //     message: "I am looking for a book related to Blockchain",
+  //     sender: "user",
+  //   },
+  // ];
+  const [userInput, setUserInput] = useState("");
+  const [messages, setMessages] = useState([initialMessages[0]]);
 
+  const sendMessage = (e: any) => {
+    e.preventDefault();
+    if (userInput.trim() === "") return;
+
+    // Add the user's message
+    const newUserMessage = {
+      id: Math.max(...messages.map((m) => m.id)) + 1, // Generate a new ID
+      message: userInput,
+      sender: "user",
+    };
+
+    // Find the next bot message based on the sequence
+    // Assuming bot messages are even IDs and user messages are odd, adjust as necessary
+    const nextBotMessageIndex = initialMessages.findIndex(
+      (m) => m.id === newUserMessage.id + 1
+    );
+    setMessages([...messages, newUserMessage]);
+    setUserInput(""); // Clear input after sending
+    setTimeout(() => {
+      if (nextBotMessageIndex !== -1) {
+        const nextBotMessage = initialMessages[nextBotMessageIndex];
+        setMessages([...messages, newUserMessage, nextBotMessage]);
+      }
+
+      setUserInput(""); // Clear input after sending
+    }, 2000);
+  };
   return (
     <>
       {/* <Popover placement="top-end" offset={20} showArrow>
@@ -54,7 +106,7 @@ const Chatbot = () => {
           </div>
         </PopoverContent>
       </Popover> */}
-      <div className="z-20">
+      <div className="z-60">
         <div className=" w-full relative max-w-lg h-[40rem] space-y-2">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start gap-4">
@@ -106,22 +158,28 @@ const Chatbot = () => {
                 </div>
               ))}
             </div>
-            <Input
-              type="text"
-              label="Enter your message..."
-              className="w-full"
-            />
+            <div className="flex gap-2 w-full">
+              <Input
+                type="text"
+                label="Enter your message..."
+                className="w-full"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+              />
 
-            {/* <p className="font-normal text-base text-slate-500 mb-4 relative z-50">
+              {/* <p className="font-normal text-base text-slate-500 mb-4 relative z-50">
               I don&apos;t know what to write so I&apos;ll just paste something
               cool here. One more sentence because lorem ipsum is just
               unacceptable. Won&apos;t ChatGPT the shit out of this.
             </p> */}
 
-            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300">
-              Explore
-            </button>
-
+              <button
+                className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300"
+                onClick={sendMessage}
+              >
+                Send
+              </button>
+            </div>
             {/* Meaty part - Meteor effect */}
             <Meteors number={20} />
           </div>

@@ -7,13 +7,16 @@ import { useState } from "react";
 export const HoverEffect = ({
   items,
   className,
+  onClick,
 }: {
   items: {
+    id: number;
     title: string;
     // description: string;
     // link: string;
   }[];
   className?: string;
+  onClick: (id: number) => void;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -25,6 +28,7 @@ export const HoverEffect = ({
           className="relative group w-1/2 block p-2 h-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          onClick={() => onClick(item.id)}
         >
           {/* <Link
           href={item?.link}

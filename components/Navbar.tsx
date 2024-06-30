@@ -24,34 +24,34 @@ export default function NavBar() {
       >
         <NavbarBrand className="mr-4">
           <AcmeLogo />
-          <p className="hidden sm:block font-bold text-inherit">ACME</p>
+          <p className="hidden sm:block font-bold text-inherit">LibraBot</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
             <Link color="foreground" href="#">
-              Features
+              Contact Us
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="#">
-              Features
+              Help and Support
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="#">
-              Features
+              About
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
+          {/* <NavbarItem isActive>
             <Link href="#" aria-current="page" color="primary">
-              Customers
+              Social Media
             </Link>
-          </NavbarItem>
-          <NavbarItem>
+          </NavbarItem> */}
+          {/* <NavbarItem>
             <Link color="foreground" href="#">
               Integrations
             </Link>
-          </NavbarItem>
+          </NavbarItem> */}
         </NavbarContent>
       </NavbarContent>
 

@@ -36,17 +36,17 @@ import gdown
 import pandas as pd
 
 # file_id=https://drive.google.com/file/d/1bS1i_oboxPfEX-j7fnst3YuOVSw0kDo-/view?usp=sharing
-url=f'https://drive.google.com/file/d/1bS1i_oboxPfEX-j7fnst3YuOVSw0kDo-/view?usp=sharing'
-output='file.csv'
-gdown.download(url, output, quiet=False)
+#url=f'https://drive.google.com/file/d/1bS1i_oboxPfEX-j7fnst3YuOVSw0kDo-/view?usp=sharing'
+#output='file.csv'
+#gdown.download(url, output, quiet=False)
 
-data = pd.read_csv(url)
+#data = pd.read_csv(url)
 
 # Load your documents
-# loader = UnstructuredCSVLoader(
-#     file_path="final_library_books.csv", mode="elements"
-# )
-# docs = loader.load()
+loader = UnstructuredCSVLoader(
+    file_path="final_library_books.csv", mode="elements"
+ )
+docs = loader.load()
 text_documents = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=500)
 documents = text_splitter.split_documents(text_documents)
